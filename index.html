@@ -62,5 +62,83 @@
                 </div>
             </div>
         </header>
+
+        <!-- 全屏主视觉视频：进入页面时铺满视窗 -->
+        <section class="hero" aria-label="主视觉">
+        <!-- 可选：仅供无障碍/SEO的标题 -->
+        <h1 class="sr-only">BAEKHYUN Official</h1>
+
+        <video
+            class="hero__video"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+        >
+            <!-- 用你的实际视频路径替换这两行 -->
+            <source src="images/mainvisualvideo.mp4" type="video/mp4" />
+        </video>
+
+        <!-- 遮罩 & 文案（可删除） -->
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <p class="hero__kicker">NEW</p>
+            <p class="hero__title">『2025 BAEKHYUN WORLD TOUR 〈Reverie〉』 詳細決定！（8/13更新）</p>
+            <a href="news.html" class="hero__cta">NEWSを見る</a>
+        </div>
+        </section>
+
+        <script>
+            const headerEl = document.querySelector('header');
+            const heroEl   = document.querySelector('.hero');
+            const videoEl  = document.querySelector('.hero__video');
+            
+            // —— 规则 A：只要滚动条>0，立刻显示导航；回到页面最顶端（<=0）就隐藏
+            const toggleByScroll = () => {
+                if (window.scrollY > 0) {
+                headerEl.classList.add('is-visible');   // 一下滑就出现
+                } else {
+                headerEl.classList.remove('is-visible'); // 回到顶端再隐藏
+                }
+            };
+            window.addEventListener('scroll', toggleByScroll, { passive: true });
+            window.addEventListener('load', toggleByScroll);
+            
+            // —— 规则 B：视频播放“结束”后显示导航
+            // 注意：如果 <video> 有 loop，"ended" 事件不会触发；若你想用这个规则，请去掉 loop
+            if (videoEl) {
+                videoEl.addEventListener('ended', () => {
+                headerEl.classList.add('is-visible');
+                });
+            
+                // 如果仍然想保留 loop，又希望“播完一轮就出现”，可以用 duration 设一个计时器：
+                videoEl.addEventListener('loadedmetadata', () => {
+                if (videoEl.loop) {
+                    const once = () => {
+                    setTimeout(() => headerEl.classList.add('is-visible'), videoEl.duration * 1000);
+                    };
+                    // 第一次自动播放成功后启动一次
+                    videoEl.play().then(once).catch(() => {});
+                }
+                });
+            }
+            
+            // —— 兜底：若因策略未能自动播放，尝试触发一次（保持你原来的逻辑）
+            const tryPlay = () => videoEl && videoEl.play && videoEl.play().catch(()=>{});
+            window.addEventListener('load', tryPlay, { once:true });
+            document.addEventListener('visibilitychange', tryPlay, { once:true });
+        </script>
+          
+
+        <div class="content">
+            <h1>samplesamplesamplesample</h1>
+            <h1>samplesamplesamplesample</h1>
+            <h1>samplesamplesamplesample</h1>
+            <h1>samplesamplesamplesample</h1>
+            <h1>samplesamplesamplesample</h1>
+            <h1>samplesamplesamplesample</h1>
+        </div>
+
     </body>
 </html>
