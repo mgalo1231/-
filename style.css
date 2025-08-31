@@ -205,7 +205,7 @@ transform: none;
   
 
 .calendar-container {
-max-width: 780px;
+max-width: 1050px;
 margin: 120px auto 96px;      /* 顶部留白：避开已固定的 header */
 padding: 0 24px;
 }
