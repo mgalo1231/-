@@ -65,29 +65,83 @@
 
         <!-- 全屏主视觉视频：进入页面时铺满视窗 -->
         <section class="hero" aria-label="主视觉">
-        <!-- 可选：仅供无障碍/SEO的标题 -->
-        <h1 class="sr-only">BAEKHYUN Official</h1>
+            <!-- 可选：仅供无障碍/SEO的标题 -->
+            <h1 class="sr-only">BAEKHYUN Official</h1>
 
-        <video
-            class="hero__video"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-        >
-            <!-- 用你的实际视频路径替换这两行 -->
-            <source src="images/mainvisualvideo.mp4" type="video/mp4" />
-        </video>
+            <video
+                class="hero__video"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+            >
+                <!-- 用你的实际视频路径替换这两行 -->
+                <source src="images/mainvisualvideo.mp4" type="video/mp4" />
+            </video>
 
-        <!-- 遮罩 & 文案（可删除） -->
-        <div class="hero__overlay"></div>
-        <div class="hero__content">
-            <p class="hero__kicker">NEW</p>
-            <p class="hero__title">『2025 BAEKHYUN WORLD TOUR 〈Reverie〉』 詳細決定！（8/13更新）</p>
-            <a href="news.html" class="hero__cta">NEWSを見る</a>
-        </div>
+            <!-- 遮罩 & 文案（可删除） -->
+            <div class="hero__overlay"></div>
+            <div class="hero__content">
+                <p class="hero__kicker">NEW</p>
+                <p class="hero__title">『2025 BAEKHYUN WORLD TOUR 〈Reverie〉』 詳細決定！（8/13更新）</p>
+                <a href="news.html" class="hero__cta">NEWSを見る</a>
+            </div>
         </section>
+
+        <div class="scroll-down">
+            <span></span>
+        </div>
+
+        <section class="news" id="news">
+            <div class="news__inner">
+              <h2 class="news__title">WHAT'S NEW</h2>
+          
+              <ul class="news-list">
+                <!-- item 1 -->
+                <li class="news-item">
+                  <time class="news-date" datetime="2025-08-25">2025/08/25</time>
+                  <a class="news-link" href="#">
+                    <p class="news-headline">『2025 BAEKHYUN WORLD TOUR〈Reverie〉』 ベクヒョンから映像が届きました！</p>
+                  </a>
+                  <span class="news-tag">NEWS</span>
+                </li>
+          
+                <!-- item 2 -->
+                <li class="news-item">
+                  <time class="news-date" datetime="2025-08-23">2025/08/23</time>
+                  <a class="news-link" href="#">
+                    <p class="news-headline">『2025 BAEKHYUN WORLD TOUR〈Reverie〉』 インタビュー映像が届きました！</p>
+                  </a>
+                  <span class="news-tag">NEWS</span>
+                </li>
+          
+                <!-- item 3 -->
+                <li class="news-item">
+                  <time class="news-date" datetime="2025-08-22">2025/08/22</time>
+                  <a class="news-link" href="#">
+                    <p class="news-headline">『2025 BAEKHYUN WORLD TOUR〈Reverie〉』 VIPアップグレードチケットFC会員専用受付（抽選）のご案内</p>
+                  </a>
+                  <span class="news-tag news-tag--fc">FC NEWS</span>
+                </li>
+          
+                <!-- item 4 -->
+                <li class="news-item">
+                  <time class="news-date" datetime="2025-08-22">2025/08/22</time>
+                  <a class="news-link" href="#">
+                    <p class="news-headline">2025 BAEKHYUN WORLD TOUR〈Reverie〉 VIPアップグレードチケット抽選販売に関するご案内（8/22更新）</p>
+                  </a>
+                  <span class="news-tag">NEWS</span>
+                </li>
+              </ul>
+          
+              <div class="news__more">
+                <a href="news.html" class="btn btn-outline">VIEW MORE</a>
+              </div>
+            </div>
+        </section>
+          
+        
 
         <script>
             const headerEl = document.querySelector('header');
@@ -128,17 +182,35 @@
             const tryPlay = () => videoEl && videoEl.play && videoEl.play().catch(()=>{});
             window.addEventListener('load', tryPlay, { once:true });
             document.addEventListener('visibilitychange', tryPlay, { once:true });
+
+
+            // WHAT'S NEW 列表：滚动到视口时逐条淡入
+            (function () {
+                const items = Array.from(document.querySelectorAll('.news-list .news-item'));
+                if (!items.length) return;
+
+                // 进入视口时添加 is-visible，并做一点“阶梯式”延迟
+                const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                    const el = entry.target;
+                    // 根据在列表中的顺序设置一个很小的延迟（最多 300ms）
+                    const index = items.indexOf(el);
+                    el.style.transitionDelay = `${Math.min(index * 90, 300)}ms`;
+                    el.classList.add('is-visible');
+                    io.unobserve(el); // 只动画一次
+                    }
+                });
+                }, {
+                root: null,
+                threshold: 0.12   // 元素约出现 12% 就触发，感觉更顺滑
+                });
+
+                items.forEach((el) => io.observe(el));
+            })();
         </script>
           
 
-        <div class="content">
-            <h1>samplesamplesamplesample</h1>
-            <h1>samplesamplesamplesample</h1>
-            <h1>samplesamplesamplesample</h1>
-            <h1>samplesamplesamplesample</h1>
-            <h1>samplesamplesamplesample</h1>
-            <h1>samplesamplesamplesample</h1>
-        </div>
 
     </body>
 </html>
