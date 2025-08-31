@@ -185,7 +185,7 @@ z-index: 1000;
 }
 header.is-visible{
 transform: translateY(0);         /* 滚过主视觉后滑下出现 */
-box-shadow: 0 6px 24px rgba(0,0,0,.08);
+/* box-shadow: 0 6px 24px rgba(0,0,0,.08); */
 }
 
 /* 如果导航出现时被后续内容遮挡，可给正文第一个区块做上内边距
@@ -199,32 +199,30 @@ header{ transition: none; }
 
 
 /* ===== SCHEDULE ===== */
-
-.calendar-container {
-max-width: 1100px;
-margin: 80px auto 60px;
-padding: 0 20px;
-}
-
-.calendar-container .title {
-text-align: center;         /* 水平居中 */
-margin-top: 150px;          /* 离导航栏足够距离 */
-margin-bottom: 60px;        /* 下方间距（可选） */
-font-size: 50px;            /* 根据需要调整字体大小 */
-font-weight: 800;           /* 粗体 */
-letter-spacing: 0.05em;     /* 字间距美化 */
+body.schedule header {
+transform: none;
 }
   
 
-.calendar-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-border: 1px solid var(--line);
-border-radius: 8px;
-padding: 12px 16px;
-margin-bottom: 10px;
-background: #fff;
+.calendar-container {
+max-width: 780px;
+margin: 120px auto 96px;      /* 顶部留白：避开已固定的 header */
+padding: 0 24px;
+}
+
+.schedule-header{
+text-align:center;
+margin-bottom: 36px;
+}
+.schedule-header .title{
+font-size: clamp(28px, 4.4vw, 48px);
+font-weight: 800;
+letter-spacing: .08em;
+margin: 0 0 6px;
+}
+.schedule-header .subtitle{
+color: var(--muted);
+font-size: 14px;
 }
 
 .month-switch {
@@ -400,4 +398,103 @@ margin: 6px 0 0;
 color: var(--muted);
 font-size: 12px;
 margin-top: 10px;
+}
+
+/* ===== CONTACT page ===== */
+body.contact header {
+transform: none;
+}
+.contact-wrap{
+max-width: 780px;
+margin: 120px auto 96px;      /* 顶部留白：避开已固定的 header */
+padding: 0 24px;
+}
+
+.contact-header{
+text-align:center;
+margin-bottom: 36px;
+}
+.contact-header .title{
+font-size: clamp(28px, 4.4vw, 48px);
+font-weight: 800;
+letter-spacing: .08em;
+margin: 0 0 6px;
+}
+.contact-header .subtitle{
+color: var(--muted);
+font-size: 14px;
+}
+
+/* 表单 */
+.contact-form{
+margin-top: 8px;
+}
+.contact-field{
+margin: 18px 0;
+}
+.contact-label{
+display:block;
+font-size: 14px;
+margin-bottom: 8px;
+}
+.contact-label.required::after{
+content:" *";
+color:#d33;
+font-weight: 700;
+}
+
+/* 仅作用于本页的输入样式，避免影响站内其他 input */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea{
+width: 100%;
+border: 1px solid var(--line);
+background: var(--bg);
+color: var(--ink);
+border-radius: 8px;
+padding: 12px 14px;
+font-size: 16px;
+outline: none;
+transition: border-color .15s ease, box-shadow .15s ease;
+}
+.contact-form textarea{
+min-height: 240px;
+resize: vertical;
+}
+.contact-form ::placeholder{ color: var(--muted); }
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible{
+border-color: var(--accent);
+box-shadow: 0 0 0 3px rgba(17,17,17,.08);
+}
+
+/* 说明文本（可选） */
+.contact-help{
+margin-top: 6px;
+font-size: 12px;
+color: var(--muted);
+}
+
+/* 送信按钮：沿用你的配色，做成全宽 */
+.contact-actions{ margin-top: 28px; }
+.contact-submit{
+width: 100%;
+height: 48px;
+border: 0;
+border-radius: 10px;
+background: var(--accent);
+color: #fff;
+font-size: 16px;
+letter-spacing: .08em;
+font-weight: 800;
+cursor: pointer;
+transition: transform .05s ease, opacity .15s ease;
+}
+.contact-submit:hover{ opacity:.92; }
+.contact-submit:active{ transform: translateY(1px); }
+
+/* 小屏微调 */
+@media (max-width: 420px){
+.contact-wrap{ margin-top: 104px; }
 }
