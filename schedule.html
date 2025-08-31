@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>BAEKHYUN　ベッキョン</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <div class="site-logo">
+                <a href="index.html"><img src="images/baekhuynlogo.png" alt="site-logo"></a>
+            </div>
+
+            <div class="nav-area">
+                <ul class="menu">
+                    <li><a href="news.html">
+                        <span class="en">NEWS</span>
+                        <span class="jp">ニュース</span>
+                    </a></li>
+                    <li><a href="biography.html">
+                        <span class="en">PROFILE</span>
+                        <span class="jp">プロフィール</span>
+                    </a></li>
+                    <li><a href="special.html">
+                        <span class="en">SCHEDULE</span>
+                        <span class="jp">スケジュール</span>
+                    </a></li>
+                    <li><a href="discography.html">
+                        <span class="en">DISCOGRAPHY</span>
+                        <span class="jp">コンテンツ</span>
+                    </a></li>
+                    <li><a href="https://baekhyun-official.jp/about?mepr-unauth-page=32&redirect_to=%2Fmembership-card">
+                        <span class="en">FANCLUB</span>
+                        <span class="jp">ファンクラブ</span>
+                    </a></li>
+                    <li><a href="#">
+                        <span class="en">CONTACT</span>
+                        <span class="jp">お問い合わせ</span>
+                    </a></li>
+                </ul>
+
+                <div class="actions">
+                    <a class="btn btn-outline" href="https://baekhyun-official.jp/register/plan-free">
+                        <!-- 用户图标 -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 21a8 8 0 0 0-16 0"/>
+                        <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        JOIN&nbsp;US
+                    </a>
+                    <a class="btn btn-solid" href="https://baekhyun-official.jp/login">
+                        <!-- 登录图标 -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                        <path d="M10 17l5-5-5-5"/>
+                        <path d="M15 12H3"/>
+                        </svg>
+                        LOGIN
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="calendar-container">
+            <h1 class="title">SCHEDULE</h1>
+        
+            <!-- ヘッダー（年月と月送り） -->
+            <div class="calendar-header">
+              <div class="month-switch">
+                <button id="prev" aria-label="前の月">&#x3008;</button>
+                <span id="month-year" class="month-year"></span>
+                <button id="next" aria-label="次の月">&#x3009;</button>
+              </div>
+        
+              <!-- 表示切替のダミー（必要なら機能追加可） -->
+              <div class="view-switch">
+                <button class="active">月</button>
+                <button disabled>週</button>
+                <button disabled>日</button>
+              </div>
+            </div>
+        
+            <!-- 曜日 -->
+            <div class="calendar-days">
+              <div>日</div><div>月</div><div>火</div><div>水</div><div>木</div><div>金</div><div>土</div>
+            </div>
+        
+            <!-- 日付グリッド（JSで生成） -->
+            <div id="calendar-grid" class="calendar-grid" aria-live="polite"></div>
+        
+            <!-- 凡例 -->
+            <div class="legend">
+              <span class="dot show"></span> ショー
+              <span class="dot tv"></span> TV・ラジオ
+              <span class="dot anniv"></span> アニバーサリー
+              <span class="dot etc"></span> その他
+            </div>
+        </main>
+        
+        <!-- 予定ポップアップ（任意・簡易） -->
+        <div id="modal" class="modal" aria-hidden="true">
+            <div class="modal-body">
+              <button id="modal-close" class="modal-close" aria-label="閉じる">×</button>
+              <h3 id="modal-title"></h3>
+              <p id="modal-desc"></p>
+              <p id="modal-meta" class="meta"></p>
+            </div>
+        </div>
+        
+        
+        <script>
+            const grid = document.getElementById("calendar-grid");
+            const monthYear = document.getElementById("month-year");
+            const btnPrev = document.getElementById("prev");
+            const btnNext = document.getElementById("next");
+
+            // 初期表示は今日の年月
+            let viewYear = new Date().getFullYear();
+            let viewMonth = new Date().getMonth(); // 0=1月
+
+            // デモ用の予定データ
+            // type: show | tv | anniv | etc
+            // dateは "YYYY-MM-DD"
+            const events = [
+            { date: "2025-05-06", type: "anniv", title: "BAEKHYUN誕生日", desc: "ハッシュタグキャンペーン実施中" },
+            { date: "2025-07-10", type: "anniv", title: "SOLO DEBUT ANNIVERSARY", desc: "" },
+            { date: "2025-05-15", type: "etc",   title: "18:00 Digital Single 'Chocolate' Release", desc: "" },
+            { date: "2025-05-15", type: "etc",   title: "20:00 『The 5th Mini Album 'Essence of Reverie'』発売記念リスニングセッション", desc: "" },
+            { date: "2025-05-19", type: "etc",   title: "18:00 The 5th Mini Album 'Essence of Reverie' Release", desc: "" },
+            { date: "2025-05-16", type: "tv",    title: "KBS2『ミュージックバンク』出演", desc: "19:00〜／字幕：日本語" },
+            { date: "2025-05-23", type: "tv",    title: "KBS2『ミュージックバンク』出演", desc: "19:00〜／字幕：日本語" },
+            { date: "2025-05-23", type: "tv",    title: "KBS2『ザ・シーズンズ – パク・ボゴムのカンタービレ』出演", desc: "23:00〜／字幕：日本語" },
+            { date: "2025-06-07", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in SEOUL", desc: "18:00〜" },
+            { date: "2025-06-08", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in SEOUL", desc: "16:00〜" },
+            { date: "2025-06-10", type: "etc",  title: "20:00 『The 5th Mini Album “Essence of Reverie”』発売記念：対面サイン会（MAKESTAR）", desc: "" },
+            { date: "2025-06-11", type: "etc",  title: "19:00 『The 5th Mini Album “Essence of Reverie”』発売記念：対面サイン会（hellolive）", desc: "" },
+            { date: "2025-06-11", type: "etc",  title: "20:30 『The 5th Mini Album “Essence of Reverie”』発売記念：対面サイン会（MAKESTAR）", desc: "" },
+            { date: "2025-06-14", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in SÃO PAULO", desc: "会場：VIBRA SÃO PAULO" },
+            { date: "2025-06-15", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in SÃO PAULO", desc: "会場：VIBRA SÃO PAULO" },
+            { date: "2025-06-17", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in SANTIAGO", desc: "会場：TEATRO CAUPOLICÁN" },
+            { date: "2025-06-19", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in MEXICO CITY", desc: "会場：PEPSI CENTER WTC" },
+            { date: "2025-06-23", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in NEWARK", desc: "会場：PRUDENTIAL CENTER" },
+            { date: "2025-06-25", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in ROSEMONT", desc: "会場：ROSEMONT THEATRE" },
+            { date: "2025-06-28", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in SUGAR LAND", desc: "会場：SMART FINANCIAL CENTRE" },
+            { date: "2025-06-30", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in SEATTLE", desc: "会場：WAMU THEATER" },
+            { date: "2025-09-01", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in MACAU", desc: "会場：GALAXY ARENA" },
+            { date: "2025-09-06", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in BANGKOK", desc: "会場：BITEC LIVE" },
+            { date: "2025-09-07", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in BANGKOK", desc: "会場：BITEC LIVE" },
+            { date: "2025-09-13", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in TOKYO", desc: "会場：KEIO ARENA TOKYO" },
+            { date: "2025-09-14", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in TOKYO", desc: "会場：KEIO ARENA TOKYO" },
+            { date: "2025-09-15", type: "etc", title: "『The 2nd Mini Album \"Interview X\"』発売記念 ファンサイン会（Whoop Japan）", desc: "@TOKYO" },
+            { date: "2025-09-20", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in TAIPEI", desc: "会場：NTSU ARENA" },
+            { date: "2025-09-21", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in TAIPEI", desc: "会場：NTSU ARENA" },
+            { date: "2025-09-27", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in HONG KONG", desc: "会場：ASIAWORLD-ARENA" },
+            { date: "2025-09-28", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in HONG KONG", desc: "会場：ASIAWORLD-ARENA" },
+            { date: "2025-08-01", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in MELBOURNE", desc: "会場：FESTIVAL HALL" },
+            { date: "2025-08-03", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in SYDNEY", desc: "会場：HORDERN PAVILION" },
+            { date: "2025-08-16", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in JAKARTA", desc: "会場：ICE BSD" },
+            { date: "2025-08-23", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in KUALA LUMPUR", desc: "会場：IDEA LIVE KL" },
+            { date: "2025-08-30", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in MACAU", desc: "会場：GALAXY ARENA" },
+            { date: "2025-08-31", type: "show", title: "2025 BAEKHYUN WORLD TOUR <Reverie> in MACAU", desc: "会場：GALAXY ARENA" },
+            { date: "2025-08-14", type: "etc", title: "19:00 『The 5th Mini Album “Essence of Reverie”』発売記念：対面サイン会（YES24）", desc: "" },
+            { date: "2025-08-14", type: "etc", title: "23:00 『The 5th Mini Album “Essence of Reverie”』発売記念：映像通話サイン会（Whoop Japan）", desc: "" },
+            { date: "2025-08-21", type: "etc", title: "19:00 『The 5th Mini Album “Essence of Reverie”』発売記念：対面サイン会（イエニマル）", desc: "" },
+            { date: "2025-08-21", type: "etc", title: "23:00 『The 5th Mini Album “Essence of Reverie”』発売記念：映像通話サイン会（WITHMUU）", desc: "" },
+            { date: "2025-08-28", type: "etc", title: "19:00 『The 5th Mini Album “Essence of Reverie”』発売記念：対面サイン会（音楽キャプチャ）", desc: "" },
+            { date: "2025-08-28", type: "etc", title: "23:00 『The 5th Mini Album “Essence of Reverie”』発売記念：映像通話サイン会（EVERLINE）", desc: "" }
+            ];
+
+            // ユーティリティ
+            const pad2 = n => String(n).padStart(2, "0");
+            const ymd = (y, m, d) => `${y}-${pad2(m+1)}-${pad2(d)}`;
+
+            // 描画
+            function render(year, month){
+            // ヘッダー
+            monthYear.textContent = `${year}年 ${month+1}月`;
+
+            // グリッドを空に
+            grid.innerHTML = "";
+
+            // 1日の曜日 & 月の末日
+            const firstDow = new Date(year, month, 1).getDay();        // 0=日
+            const lastDate = new Date(year, month+1, 0).getDate();     // 月末
+
+            // 先頭の空セル
+            for(let i=0;i<firstDow;i++){
+                const empty = document.createElement("div");
+                empty.className = "cell empty";
+                grid.appendChild(empty);
+            }
+
+            // 各日セル
+            for(let d=1; d<=lastDate; d++){
+                const cell = document.createElement("div");
+                const dateText = document.createElement("span");
+                dateText.className = "date";
+                dateText.textContent = d;
+                cell.appendChild(dateText);
+
+                // その日のイベントを抽出
+                const key = ymd(year, month, d);
+                const todays = events.filter(e => e.date === key);
+
+                todays.forEach(e => {
+                const card = document.createElement("div");
+                card.className = `event ${e.type}`;
+                card.textContent = e.title;
+                card.tabIndex = 0;
+
+                // クリックでモーダル
+                card.addEventListener("click", () => openModal(e));
+                cell.appendChild(card);
+                });
+
+                grid.appendChild(cell);
+            }
+            }
+
+            // 月送り
+            btnPrev.addEventListener("click", () => {
+            viewMonth--;
+            if(viewMonth < 0){ viewMonth = 11; viewYear--; }
+            render(viewYear, viewMonth);
+            });
+            btnNext.addEventListener("click", () => {
+            viewMonth++;
+            if(viewMonth > 11){ viewMonth = 0; viewYear++; }
+            render(viewYear, viewMonth);
+            });
+
+            // モーダル
+            const modal = document.getElementById("modal");
+            const modalClose = document.getElementById("modal-close");
+            const modalTitle = document.getElementById("modal-title");
+            const modalDesc = document.getElementById("modal-desc");
+            const modalMeta = document.getElementById("modal-meta");
+
+            function openModal(e){
+            modalTitle.textContent = e.title;
+            modalDesc.textContent = e.desc || "";
+            modalMeta.textContent = `日付：${e.date}　種別：${labelOf(e.type)}`;
+            modal.setAttribute("aria-hidden","false");
+            }
+            function labelOf(type){
+            return (
+                type === "show"  ? "ショー" :
+                type === "tv"    ? "TV・ラジオ" :
+                type === "anniv" ? "アニバーサリー" : "その他"
+            );
+            }
+            function closeModal(){ modal.setAttribute("aria-hidden","true"); }
+            modalClose.addEventListener("click", closeModal);
+            modal.addEventListener("click", (ev)=>{ if(ev.target===modal) closeModal(); });
+            document.addEventListener("keydown", (ev)=>{ if(ev.key==="Escape") closeModal(); });
+
+            // 初期表示（例：2025年8月から始めたい場合は固定してOK）
+            viewYear = 2025;
+            viewMonth = 7; // 8月
+            render(viewYear, viewMonth);
+
+            (function(){
+            const header = document.querySelector('header');
+            const hero   = document.querySelector('.hero');
+
+            // 没有主视觉（.hero）的页面：直接显示
+            if(!hero){
+                header.classList.add('is-visible');
+                header.style.transform = 'translateY(0)';  // 兜底
+                return;
+            }
+
+            // 有主视觉：滚过一定阈值再显示
+            const threshold = Math.max(0, hero.offsetHeight * 0.4);
+
+            function update(){
+                if (window.scrollY > threshold){
+                header.classList.add('is-visible');
+                } else {
+                header.classList.remove('is-visible');
+                }
+            }
+            window.addEventListener('scroll', update, {passive:true});
+            window.addEventListener('load', update);
+            })();
+        </script>
+
+    </body>
+</html>
