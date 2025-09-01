@@ -5,8 +5,9 @@
         <title>BAEKHYUN　ベッキョン</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body style="background-image: url('images/123.png'); background-size: cover; background-position: center;">
-        <header>
+    <body class="profile">
+
+        <header class="site-header">
             <div class="site-logo">
                 <a href="index.html"><img src="images/baekhuynlogo.png" alt="site-logo"></a>
             </div>
@@ -63,6 +64,78 @@
             </div>
         </header>
 
+        <section class="profile-hero">
+            <img class="profile-bg" src="images/profile-bg.webp" alt="main visual">
+            <div class="profile-content">
+              <h1 class="profile-title">
+                <span class="en">PROFILE</span>
+                <span class="jp">プロフィール</span>
+              </h1>
+            </div>
+            <div class="scroll-down"><span></span></div>
+        </section>
+
+
+
+
+
+        <div>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+            <h1>samplesamplesamplesamplesamplesample</h1>
+        </div>
+          
+
         
     </body>
+
+
+
+    <script>
+
+
+        (function () {
+        const header = document.querySelector('.site-header');
+        const hero   = document.querySelector('.profile-hero');
+        if (!header || !hero) return;
+
+        const io = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+            header.classList.remove('is-visible');
+            } else {
+            header.classList.add('is-visible');
+            }
+        }, {
+            root: null,
+            threshold: 0.9,
+            rootMargin: '-64px 0px 0px 0px'
+        });
+
+        io.observe(hero);
+
+        const fallback = () => {
+            const rect = hero.getBoundingClientRect();
+            if (rect.bottom <= 0) header.classList.add('is-visible');
+            else header.classList.remove('is-visible');
+        };
+        window.addEventListener('load', fallback, { once: true });
+        window.addEventListener('pageshow', fallback, { once: true });
+        })();
+
+
+    </script>
+      
 </html>

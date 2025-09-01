@@ -729,3 +729,112 @@ display:block; margin: 0 auto 18px; width: min(60%, 360px); height: auto;
 .site-footer .footer-content{ bottom: 7vh; }
 .site-footer .footer-meta{ gap: 16px; }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== PROFILE 主视觉区块 ===== */
+body.profile .site-header {
+position: fixed;
+top: 0; left: 0; right: 0;
+transform: translateY(-100%);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+z-index: 1000;
+}
+
+body.profile .site-header.is-visible {
+transform: translateY(0);
+}
+
+.profile-hero {
+position: relative;
+width: 100%;
+height: 100vh;
+overflow: hidden;
+}
+
+.profile-bg {
+position: absolute;
+inset: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+z-index: 0;
+}
+
+/* 文字内容居中显示 */
+.profile-content {
+position: relative;
+z-index: 1;
+height: 66%;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+padding-right: 4%;
+/* padding-top: 5vh; */
+}
+
+.profile-title {
+color: #fff;
+text-align: right;
+opacity: 0;
+transform: translateY(20px);
+animation: fadeInUp 1.2s ease forwards;
+animation-delay: 0.4s;
+}
+
+.profile-title .en {
+display: block;
+font-size: clamp(32px, 5vw, 56px);  /* 与 schedule 保持一致 */
+font-weight: 800;
+letter-spacing: 0.08em;               /* 与 schedule 保持一致 */
+line-height: 1.1;
+color: var(--ink);                    /* 如果 schedule 用的是黑色，这里也改为变量 */
+}
+
+.profile-title .jp {
+display: block;
+font-size: 22px;                      /* schedule 的 subtitle 是 14px */
+color: var(--muted);                  /* 与 schedule 的副标题颜色一致 */
+font-weight: 400;
+margin-top: 6px;
+letter-spacing: 0.08em;
+}
+
+/* 进入动画 */
+@keyframes fadeInUp {
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+/* 向下滑动箭头（共用你已有样式） */
+.profile-hero .scroll-down {
+position: absolute;
+bottom: 28px;
+left: 50%;
+transform: translateX(-50%);
+z-index: 2;
+}
+
+.profile-hero .scroll-down span {
+display: inline-block;
+width: 24px;
+height: 24px;
+border-bottom: 2px solid #fff;
+border-right: 2px solid #fff;
+transform: rotate(45deg);
+animation: bounce 1.8s infinite ease-in-out;
+opacity: 0.8;
+}
