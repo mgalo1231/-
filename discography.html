@@ -5,7 +5,7 @@
         <title>BAEKHYUN　ベッキョン</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body style="background-image: url('images/123.png'); background-size: cover;">
+    <body class="discography">
         <header>
             <div class="site-logo">
                 <a href="index.html"><img src="images/baekhuynlogo.png" alt="site-logo"></a>
@@ -66,6 +66,389 @@
                 </div>
             </div>
         </header>
+
+        <main>
+            <div class="discography-header" aria-labelledby="discographyTitle">
+                <h1 id="discographyTitle" class="title">DISCOGRAPHY</h1>
+                <div class="subtitle">ディスコグラフィ</div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="discog-tabs" role="tablist" aria-label="Filter discs">
+                <button class="tab is-active" role="tab" aria-selected="true" data-filter="all">ALL</button>
+                <button class="tab" role="tab" aria-selected="false" data-filter="album">ALBUM</button>
+                <button class="tab" role="tab" aria-selected="false" data-filter="single">SINGLE</button>
+            </div>
+
+            <!-- Grid -->
+            <section class="discog-grid">
+                <!-- Card 1 (示例：左上那张带详细文案) -->
+                <article class="discog-card reveal" data-type="album"
+                    data-subtitle="The 5th Mini Album"
+                    data-title="'Essence of Reverie'"
+                    data-date="2025.05.19 Release"
+                    data-cover="images/essence.png"
+                    data-tracks="Chocolate||Elevator||Lemonade||Love Comes Back||No Problem||Black Dreams||Late Night Calls"
+                    data-lead="2" 
+                    data-audio="music/elevator.mp3"
+                    data-spotify="https://open.spotify.com/intl-ja/album/5m3xaHvFvODdctmtdQ9qzB"
+                    data-apple="https://music.apple.com/jp/album/essence-of-reverie/1811564481">
+                    <a class="card-link" href="#" aria-label="Essence of Reverie 詳細を見る">
+                        <img src="images/essence.png" alt="Essence of Reverie ジャケット" class="card-img" />
+                        <div class="card-overlay">
+                        <span class="badge">ALBUM</span>
+                        <h3 class="card-title">The 5th Mini Album<br>'Essence of Reverie'</h3>
+                        <p class="card-meta">2025.05.19 Release</p>
+                        </div>
+                    </a>
+                </article>
+
+                <article class="discog-card reveal" data-type="album"
+                    data-subtitle="The 4th Mini Album"
+                    data-title="'Hello, World'"
+                    data-date="2024.09.06 Release"
+                    data-cover="images/helloworld.jpg"
+                    data-tracks="Chocolate||Elevator||Lemonade||Love Comes Back||No Problem||Black Dreams||Late Night Calls"
+                    data-lead="2" 
+                    data-audio="music/elevator.mp3"
+                    data-spotify="https://open.spotify.com/intl-ja/album/5m3xaHvFvODdctmtdQ9qzB"
+                    data-apple="https://music.apple.com/jp/album/essence-of-reverie/1811564481">
+                    <a class="card-link" href="#">
+                      <img src="images/helloworld.jpg" alt="BAEKHYUN Cover 02" class="card-img" />
+                      <div class="card-overlay">
+                        <span class="badge">ALBUM</span>
+                        <h3 class="card-title">The 4th Mini Album<br>'Hello, World'</h3>
+                        <p class="card-meta">2024.09.06 Release</p>
+                      </div>
+                    </a>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="discog-card reveal" data-type="single">
+                    <a class="card-link" href="#">
+                    <img src="images/paranoia.png" alt="Paranoia Single" class="card-img" />
+                    <div class="card-overlay">
+                        <span class="badge">SINGLE</span>
+                        <h3 class="card-title">HEARTSTEEL<br>(League of Legends)<br>'PARANOIA'</h3>
+                        <p class="card-meta">2023.10.24 Release</p>
+                    </div>
+                    </a>
+                </article>
+            
+                <!-- Card 4 -->
+                <article class="discog-card reveal" data-type="album">
+                    <a class="card-link" href="#">
+                    <img src="images/bambi.jpg" alt="bambi" class="card-img" />
+                    <div class="card-overlay">
+                        <span class="badge">ALBUM</span>
+                        <h3 class="card-title">The 3rd Mini Album<br>'Bambi'</h3>
+                        <p class="card-meta">2021.03.30 Release</p>
+                    </div>
+                    </a>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="discog-card reveal" data-type="album">
+                    <a class="card-link" href="#">
+                    <img src="images/baekhyunjp.png" alt="baekhyunjp" class="card-img" />
+                    <div class="card-overlay">
+                        <span class="badge">ALBUM</span>
+                        <h3 class="card-title">JAPAN 1st Mini Album<br>'BAEKHYUN'</h3>
+                        <p class="card-meta">2021.01.20 Release</p>
+                    </div>
+                    </a>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="discog-card reveal" data-type="single">
+                    <a class="card-link" href="#">
+                    <img src="images/amusementpark.jpeg" alt="amusementpark Single" class="card-img" />
+                    <div class="card-overlay">
+                        <span class="badge">SINGLE</span>
+                        <h3 class="card-title">'Amusement Park'<br>(놀이공원)</h3>
+                        <p class="card-meta">2020.12.21 Release</p>
+                    </div>
+                    </a>
+                </article>
+
+                <!-- Card 7 -->
+                <article class="discog-card reveal" data-type="album">
+                    <a class="card-link" href="#">
+                    <img src="images/delight.png" alt="delight" class="card-img" />
+                    <div class="card-overlay">
+                        <span class="badge">ALBUM</span>
+                        <h3 class="card-title">The 2nd Mini Album<br>'Delight'</h3>
+                        <p class="card-meta">2020.05.25 Release</p>
+                    </div>
+                    </a>
+                </article>
+
+                <!-- Card 8 -->
+                <article class="discog-card reveal" data-type="album">
+                    <a class="card-link" href="#">
+                    <img src="images/citylights.png" alt="bambi" class="card-img" />
+                    <div class="card-overlay">
+                        <span class="badge">ALBUM</span>
+                        <h3 class="card-title">The 1st Mini Album<br>'City Lights'</h3>
+                        <p class="card-meta">2019.07.10 Release</p>
+                    </div>
+                    </a>
+                </article>
+            </section>
+        </main>
+
+
+        <!-- Discography Modal -->
+        <div class="discog-modal" aria-hidden="true">
+            <div class="modal-overlay" role="dialog" aria-modal="true">
+                
+        
+                <div class="modal-content">
+                    <button class="modal-close" aria-label="Close modal">X</button>
+                    <img src="" alt="Album cover" class="modal-cover">
+            
+                    <div class="modal-info">
+                        <h3 class="modal-subtitle"></h3>
+                        <h2 class="modal-title"></h2>
+                        <p class="modal-date"></p>
+                
+                        <ol class="modal-tracks"></ol>
+                
+                        <div class="modal-links">
+                            <a class="link-spotify" href="#" target="_blank" rel="noopener">
+                            <img src="images/spotifyの背景が削除されました.png" alt="Spotify">
+                            </a>
+                            <a class="link-apple" href="#" target="_blank" rel="noopener">
+                            <img src="images/applemusiclogo.svg" alt="Apple Music">
+                            </a>
+                        </div>
+                    </div>
+            
+                    <!-- 音频播放 -->
+                    <audio id="modalAudio" preload="auto"></audio>
+            
+                    <!-- 静音按钮（你已有两张图） -->
+                    <button class="sound-toggle" aria-label="Toggle Sound">
+                    <img src="images/sound_on_white.png" alt="Sound On" id="soundIcon">
+                    </button>
+                </div>
+            </div>
+        </div>
+  
+
+
+          
+
+
+
+
+
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+              // 进入动画
+              document.body.classList.add('page-enter');
+            
+              // 筛选
+              const tabs = document.querySelectorAll('.discog-tabs .tab');
+              const cards = document.querySelectorAll('.discog-card');
+            
+              function applyFilter(key){
+                cards.forEach(card => {
+                  const type = card.dataset.type;  // "album" | "single"
+                  const show = (key === 'all') || (type === key);
+                  card.classList.toggle('is-hidden', !show);
+                });
+              }
+            
+              tabs.forEach(btn => {
+                btn.addEventListener('click', () => {
+                  tabs.forEach(b => { b.classList.remove('is-active'); b.setAttribute('aria-selected','false'); });
+                  btn.classList.add('is-active');
+                  btn.setAttribute('aria-selected','true');
+                  applyFilter(btn.dataset.filter);
+                });
+              });
+            
+              // 初始显示 ALL
+              applyFilter('all');
+            
+              // 滚动 reveal（逐个出现）
+              const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                  if(entry.isIntersecting){
+                    entry.target.classList.add('is-visible');
+                    io.unobserve(entry.target);
+                  }
+                });
+              }, { threshold: 0.15 });
+            
+              document.querySelectorAll('.discog-card.reveal').forEach(el => io.observe(el));
+            });
+
+
+
+
+
+
+
+            (() => {
+            const modal = document.querySelector('.discog-modal');
+            const overlay = modal.querySelector('.modal-overlay');
+            const closeBtn = modal.querySelector('.modal-close');
+            const soundBtn = modal.querySelector('.sound-toggle');
+            const soundIcon = document.getElementById('soundIcon');
+            const audio = document.getElementById('modalAudio');
+
+            const el = {
+                cover: modal.querySelector('.modal-cover'),
+                subtitle: modal.querySelector('.modal-subtitle'),
+                title: modal.querySelector('.modal-title'),
+                date: modal.querySelector('.modal-date'),
+                tracks: modal.querySelector('.modal-tracks'),
+                linkSpotify: modal.querySelector('.link-spotify'),
+                linkApple: modal.querySelector('.link-apple'),
+            };
+
+            let lastFocus = null;   // 记录打开前的焦点
+            let fadeTimer = null;
+
+            // 用卡片 data-* 填充 modal
+            function fillFromCard(card){
+                const subtitle = card.dataset.subtitle || '';
+                const title = card.dataset.title || '';
+                const date = card.dataset.date || '';
+                const cover = card.dataset.cover || '';
+                const tracksStr = card.dataset.tracks || '';
+                const lead = parseInt(card.dataset.lead || '1', 10);
+                const audioSrc = card.dataset.audio || '';
+                const sp = card.dataset.spotify || '#';
+                const ap = card.dataset.apple || '#';
+
+                el.subtitle.textContent = subtitle;
+                el.title.textContent = title;
+                el.date.textContent = date;
+                el.cover.src = cover;
+                el.cover.alt = `${title} cover`;
+
+                // 重建曲目列表
+                el.tracks.innerHTML = '';
+                const list = tracksStr.split('||').map(s => s.trim()).filter(Boolean);
+                list.forEach((t, idx) => {
+                const li = document.createElement('li');
+                li.textContent = t;
+                if (idx + 1 === lead) li.classList.add('is-lead');
+                el.tracks.appendChild(li);
+                });
+
+                // 链接
+                el.linkSpotify.href = sp;
+                el.linkApple.href = ap;
+
+                // 音频
+                audio.src = audioSrc;
+                audio.currentTime = 0;
+                audio.muted = false;
+                audio.volume = 0;              // 为淡入做准备
+                updateSoundIcon();
+            }
+
+            // 打开
+            function openModal(card){
+                lastFocus = document.activeElement;
+
+                fillFromCard(card);
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('modal-open');
+
+                // 播放并淡入
+                const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const startPlay = () => audio.play().catch(() => {}); // Safari/权限兼容
+                startPlay();
+
+                if (prefersReduce) {
+                audio.volume = 1;
+                } else {
+                clearInterval(fadeTimer);
+                audio.volume = 0;
+                fadeTimer = setInterval(() => {
+                    audio.volume = Math.min(1, audio.volume + 0.08);
+                    if (audio.volume >= 1) clearInterval(fadeTimer);
+                }, 80);
+                }
+
+                // 将焦点移入
+                closeBtn.focus();
+                trapFocus(true);
+            }
+
+            // 关闭
+            function closeModal(){
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('modal-open');
+                clearInterval(fadeTimer);
+                audio.pause();
+
+                trapFocus(false);
+                if (lastFocus && typeof lastFocus.focus === 'function') {
+                lastFocus.focus();
+                }
+            }
+
+            // 焦点陷阱（辅助无障碍）
+            function trapFocus(enable){
+                if (!enable) {
+                document.removeEventListener('keydown', onKeydownTrap);
+                return;
+                }
+                document.addEventListener('keydown', onKeydownTrap);
+            }
+            function onKeydownTrap(e){
+                if (e.key !== 'Tab') return;
+                const focusables = modal.querySelectorAll('button,[href],audio,[tabindex]:not([tabindex="-1"])');
+                const list = Array.from(focusables).filter(n => !n.hasAttribute('disabled'));
+                if (list.length === 0) return;
+                const first = list[0], last = list[list.length - 1];
+
+                if (e.shiftKey && document.activeElement === first) {
+                last.focus(); e.preventDefault();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                first.focus(); e.preventDefault();
+                }
+            }
+
+            // 静音切换
+            function updateSoundIcon(){
+                soundIcon.src = audio.muted ? 'images/sound_muted_white.png' : 'images/sound_on_white.png';
+                soundIcon.alt = audio.muted ? 'Sound Off' : 'Sound On';
+            }
+            soundBtn.addEventListener('click', () => {
+                audio.muted = !audio.muted;
+                updateSoundIcon();
+            });
+
+            // 关闭动作
+            closeBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                // 点击遮罩（.discog-modal 自己，而不是内容盒）关闭
+                if (e.target === modal) closeModal();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (modal.getAttribute('aria-hidden') === 'false' && e.key === 'Escape') closeModal();
+            });
+
+            // 事件代理：点击任何一张 .discog-card 打开
+            document.querySelector('.discog-grid')?.addEventListener('click', (e) => {
+                const card = e.target.closest('.discog-card');
+                if (!card) return;
+                e.preventDefault();
+                openModal(card);
+            });
+            })();
+
+
+        </script>
+            
 
         
     </body>
