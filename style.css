@@ -1071,3 +1071,99 @@ body.modal-open { overflow: hidden; } /* 打开弹窗时禁止页面滚动 */
 .discog-modal, .modal-overlay { transition: none !important; }
 }
   
+
+/* ===== PROFILE 内容区 ===== */
+.profile-main {
+max-width: 1080px;
+margin: 0 auto;
+padding: 56px 0px 0px 0px;
+}
+
+.profile-info {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 40px;
+align-items: start;
+margin-bottom: 56px;
+}
+
+.profile-photo img {
+width: 77%;
+border-radius: 12px;
+display: block;
+}
+
+.profile-details h2 {
+font-size: clamp(24px, 4vw, 40px);
+font-weight: 800;
+margin: 0 0 8px;
+}
+.profile-details h2 .jp {
+font-size: 18px;
+font-weight: 400;
+color: var(--muted);
+margin-left: 8px;
+}
+
+.profile-details .meta {
+color: var(--muted);
+font-size: 14px;
+margin: 4px 0 16px;
+}
+.profile-details hr {
+border: none;
+border-top: 1px solid var(--line);
+margin: 16px 0 20px;
+}
+
+.profile-details dt {
+font-weight: 700;
+margin: 12px 0 4px;
+}
+.profile-details dd {
+margin: 0 0 10px 0;
+line-height: 1.6;
+}
+
+/* ===== reveal 动效 ===== */
+.reveal {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity .8s ease, transform .8s ease;
+}
+.reveal.is-visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* ===== 横向滚动 ===== */
+.profile-marquee {
+overflow: hidden;
+white-space: nowrap;
+position: relative;
+border-top: 1px solid var(--line);
+border-bottom: 1px solid var(--line);
+padding: 20px 0;
+}
+
+.marquee {
+display: flex;             /* 让文字块横向并排 */
+width: 200%;        /* 宽度跟随内容 */
+animation: marquee 50s linear infinite;  /* 动画时间加长，速度变慢 */
+}
+
+.marquee span {
+font-size: clamp(28px, 6vw, 64px);
+font-weight: 800;
+color: #d3d3d3;
+letter-spacing: .05em;
+padding-right: 40px;
+}
+
+/* 关键帧动画：文字循环向左移动一整屏 */
+@keyframes marquee {
+0%   { transform: translateX(0); }
+100% { transform: translateX(-50%); }
+}
+  
+  

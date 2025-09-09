@@ -83,24 +83,52 @@
 
 
 
-        <div>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-            <h1>samplesamplesamplesamplesamplesample</h1>
-        </div>
+        <main class="profile-main">
+            <section class="profile-info reveal">
+              <div class="profile-photo">
+                <img src="images/profile.png" alt="BAEKHYUN">
+              </div>
+              <div class="profile-details">
+                <h2>BAEKHYUN <span class="jp">ベクヒョン(백현)</span></h2>
+                <p class="meta">
+                  <span>生年月日　1992.05.06</span>　
+                  <span>デビュー　2012.04.08</span>
+                </p>
+                <hr>
+                <dl>
+                  <dt>所属</dt>
+                  <dd>EXO、SuperM、SOLO ARTIST</dd>
+                  <dt>出身地</dt>
+                  <dd>韓国・京畿道</dd>
+                  <dt>活動内容・特徴</dt>
+                  <dd>
+                    ・圧倒的な歌唱力と表現力<br>
+                    ・R&amp;B、バラード、ポップなど幅広いジャンルで活躍<br>
+                    ・ドラマやミュージカルにも出演
+                  </dd>
+                  <dt>ソロ活動</dt>
+                  <dd>
+                    ・ミニアルバムシリーズ「City Lights」「Delight」「Bambi」<br>
+                    ・全てのアルバムが大ヒットし“百万セラー”を記録
+                  </dd>
+                  <dt>受賞歴</dt>
+                  <dd>“ベストソロアーティスト賞”など</dd>
+                </dl>
+              </div>
+            </section>
+          
+            
+        </main>
+
+        <!-- 横向滚动文字 -->
+        <section class="profile-marquee">
+            <div class="marquee">
+              <span>BAEKHYUN ・ BAEKHYUN ・ BAEKHYUN ・ BAEKHYUN ・ </span>
+              <span>BAEKHYUN ・ BAEKHYUN ・ BAEKHYUN ・ BAEKHYUN ・ </span>
+              <span>BAEKHYUN ・ BAEKHYUN ・ BAEKHYUN ・ BAEKHYUN ・ </span>
+            </div>
+        </section>
+          
           
 
         
@@ -138,6 +166,23 @@
         window.addEventListener('load', fallback, { once: true });
         window.addEventListener('pageshow', fallback, { once: true });
         })();
+
+
+
+
+        // ===== 内容出现动效 =====
+        const reveals = document.querySelectorAll('.reveal');
+        const io2 = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io2.unobserve(entry.target); // 只触发一次
+            }
+        });
+        }, { threshold: 0.2 });
+
+        reveals.forEach(el => io2.observe(el));
+
 
 
     </script>
