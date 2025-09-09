@@ -5,7 +5,7 @@
         <title>BAEKHYUN　ベッキョン</title>
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body class="newspage">
         <header>
             <div class="site-logo">
                 <a href="index.html"><img src="images/baekhuynlogo.png" alt="site-logo"></a>
@@ -29,10 +29,10 @@
                         <span class="en">DISCOGRAPHY</span>
                         <span class="jp">ディスコグラフィ</span>
                     </a></li>
-                    <li><a href="event.html">
+                    <!-- <li><a href="event.html">
                         <span class="en">EVENT</span>
                         <span class="jp">イベント</span>
-                    </a></li>
+                    </a></li> -->
                     <li><a href="https://baekhyun-official.jp/about?mepr-unauth-page=32&redirect_to=%2Fmembership-card">
                         <span class="en">FANCLUB</span>
                         <span class="jp">ファンクラブ</span>
@@ -67,6 +67,345 @@
             </div>
         </header>
 
+        <main>
+            <div class="news-header" aria-labelledby="newsTitle">
+                <h1 id="newsTitle" class="title">NEWS</h1>
+                <div class="subtitle">ニュース</div>
+            </div>
+            
+            <div class="news__inner">
+                
+          
+              <ul class="news-list">
+                <li class="news-item">
+                  <span class="news-date">2025/09/05</span>
+                  <a href="#" class="news-link" data-news="news1">
+                    <p class="news-headline">『2025 BAEKHYUN WORLD TOUR ＜Reverie＞』グループフォトイベントについて</p>
+                  </a>
+                </li>
+                <li class="news-item">
+                  <span class="news-date">2025/09/01</span>
+                  <a href="#" class="news-link" data-news="news2">
+                    <p class="news-headline">『2025 BAEKHYUN WORLD TOUR ＜Reverie＞』グループフォトイベント(1:20)の実施が決定</p>
+                  </a>
+                </li>
+                <!-- 更多条目同样结构 -->
+              </ul>
+          
+              <!-- 分页 -->
+              <div class="news__more">
+                <div class="pagination">
+                  <a href="#" class="page current">1</a>
+                  <a href="#" class="page">2</a>
+                  <a href="#" class="page">3</a>
+                  <a href="#" class="page">▶</a>
+                </div>
+              </div>
+            </div>
+          </main>
+          
+          <!-- 🔔 弹窗 -->
+          <div class="news-modal" aria-hidden="true">
+            <div class="news-modal-body">
+              <div class="news-modal-content" id="news1">
+                <h2>『2025 BAEKHYUN WORLD TOUR ＜Reverie＞』グループフォトイベントについて</h2>
+                <p class="meta">2025/09/05</p>
+                <p>
+                    ベクヒョン ジャパンオフィシャルファンクラブ事務局です。<br>
+                    いつもベクヒョンを応援していただきありがとうございます。<br><br>
+                    『2025 BAEKHYUN WORLD TOUR ＜Reverie＞』スペシャルイベントグループフォトイベントに関する案内が掲載されました。<br>
+                    詳細は下記にてご確認ください。<br>
+                    https://itony-itsmem.com/contents/977854<br>
+                    本イベントに関するお問い合わせをファンクラブ事務局へいただきましても、お答えいたしかねます。あらかじめご了承ください。<br><br>
+                    現在、チケット一般発売中です。<br>
+                    イープラス：https://eplus.jp/baekhyun/<br>
+                    ぴあ: https://w.pia.jp/t/baekhyun2025/<br>
+                    ローソン: https:///-tike.com/baekhyun/<br>
+                    【主催】 INB100 / iTONY INTERNATIONAL / COPAN GLOBAL<br>
+                    【企画】INB100/COPAN GLOBAL<br>
+                    【制作】 COPAN GLOBAL / ITONY INTERNATIONAL<br>
+                    【協力】 MY ENTERTAINMENT<br>
+                    【運営】 SOGO TOKYO（東京）/ミューベンツ・ジャパン（神戸）/サンデーフォークプロモーション（名古屋）/ALL-IN ENTERTAINMENT /
+                    CONCEPT.K COMPANY
+                </p>
+                <div class="news-back">← BACK</div>
+              </div>
+          
+              <div class="news-modal-content" id="news2">
+                <h2>『2025 BAEKHYUN WORLD TOUR ＜Reverie＞』グループフォトイベント(1:20)の実施が決定</h2>
+                <p class="meta">2025/09/01</p>
+                <p>こちらは例の第二条目详细内容…</p>
+                <div class="news-back">← BACK</div>
+              </div>
+            </div>
+        </div>
+
+
+        <script>
+            // ==== 假设有一组新闻数据（可以随时增删改） ====
+            const newsData = [
+            {
+                id: "news1",
+                date: "2025/09/05",
+                title: "『2025 BAEKHYUN WORLD TOUR ＜Reverie＞ in JAPAN』グループフォトイベントについて",
+                content: `
+                <p>
+                    ベクヒョン ジャパンオフィシャルファンクラブ事務局です。<br>
+                    いつもベクヒョンを応援していただきありがとうございます。<br><br>
+                    『2025 BAEKHYUN WORLD TOUR ＜Reverie＞』スペシャルイベントグループフォトイベントに関する案内が掲載されました。<br>
+                    詳細は下記にてご確認ください。<br>
+                    <a href="https://itony-itsmem.com/contents/977854">https://itony-itsmem.com/contents/977854</a><br>
+                    本イベントに関するお問い合わせをファンクラブ事務局へいただきましても、お答えいたしかねます。あらかじめご了承ください。<br><br>
+                    現在、チケット一般発売中です。<br>
+                    イープラス：<a href="https://eplus.jp/baekhyun/">https://eplus.jp/baekhyun/</a><br>
+                    ぴあ: <a href="https://w.pia.jp/t/baekhyun2025/">https://w.pia.jp/t/baekhyun2025/</a><br>
+                    ローソン: <a href="https:///-tike.com/baekhyun/">https:///-tike.com/baekhyun/</a><br><br>
+                    【主催】 INB100 / iTONY INTERNATIONAL / COPAN GLOBAL<br>
+                    【企画】INB100/COPAN GLOBAL<br>
+                    【制作】 COPAN GLOBAL / ITONY INTERNATIONAL<br>
+                    【協力】 MY ENTERTAINMENT<br>
+                    【運営】 SOGO TOKYO（東京）/ミューベンツ・ジャパン（神戸）/サンデーフォークプロモーション（名古屋）/ALL-IN ENTERTAINMENT /
+                    CONCEPT.K COMPANY
+                </p>
+                `
+            },
+            {
+                id: "news2",
+                date: "2025/09/01",
+                title: "『2025 BAEKHYUN WORLD TOUR ＜Reverie＞ in JAPAN』抽選結果確認",
+                content: `
+                <p>
+                    イープラスをご利用いただきまして、誠にありがとうございます。<br><br>
+                    <mark style="background-color:#c2a1da"><strong>ゴ トウニ</strong></mark>様にお申込みいただいたチケットを下記の内容にてご用意いたしました。<br><br>
+                    🥳🥳🥳おめでとうございます！🥳🥳🥳<br>
+                    <hr>
+                    <img src="images/news/news2.jpg" alt="当選">
+                </p>`
+            },
+            {
+                id: "news3",
+                date: "2025/08/25",
+                title: "ベクヒョンから映像が届きました！",
+                content: `
+                <p>
+                    こんにちは。<br>
+                    ベクヒョン ジャパンオフィシャルファンクラブ事務局です。<br><br>
+                    ベクヒョンから映像が届きました！<br>
+                    <hr>
+                    <video controls style="display:block; margin:20px auto; max-width:100%; border-radius:8px;">
+                        <source src="images/news/news3.mov" type="video/mp4">
+                    </video>
+                </p>`
+            },
+            {
+                id: "news4",
+                date: "2025/08/13",
+                title: "『2025 BAEKHYUN WORLD TOUR ＜Reverie＞in JAPAN』名古屋公演開催中止のお知らせ",
+                content: `
+                <p>
+                    ベクヒョンジャパン オフィシャルファンクラブ事務局です。<br><br>
+                    皆さまに大切なお知らせがございます。<br>
+                    該当される方は、下記内容をご確認のうえ、ご対応くださいますようお願い申し上げます。<br>
+                    <hr>
+                    平素よりBAEKHYUNを応援いただき、誠にありがとうございます。<br>
+                    2025年10月25日（土）・26日（日）にAICHI SKY EXPO HALLAにて開催を予定しておりました、『2025 BAEKHYUN WORLD TOUR＜Reverie＞ in JAPAN」につきまして、諸般の事情により、関係各所と協議を重ねてまいりましたが、本公演を開催することが困難であると判断し、誠に残念ながら本公演を中止とさせていただくことになりました。<br>
+                    本公演を楽しみにしてくださっていたファンの皆様には、多大なるご迷惑をおかけすることを心よりお詫び申し上げます。
+
+                </p>`
+            },
+            {
+                id: "news5",
+                date: "2025/08/13",
+                title: "『2025 BAEKHYUN WORLD TOUR ＜Reverie＞ in JAPAN』 詳細決定！（8/13更新）",
+                content: `
+                <p>
+                    こんにちは。
+                    ベクヒョン ジャパン オフィシャルファンクラブ事務局です。<br>
+                    『2025 BAEKHYUN WORLD TOUR ＜Reverie＞」の詳細が決定いたしました！<br>
+                    詳細については下記よりご確認ください。<br>
+                    <img src="images/news/news5.jpg" alt="公演詳細"><br>
+                    <b>デビュー13年目にして初となるソロワールドツアーの開催が決定した！</b>
+                </p>`
+            },
+            {
+                id: "news6",
+                date: "2025/06/18",
+                title: "ベクヒョンから映像が届きました！",
+                content: `
+                <p>
+                    こんにちは。<br>
+                    ベクヒョン ジャパンオフィシャルファンクラブ事務局です。<br><br>
+                    ベクヒョンから映像が届きました！<br>
+                    <hr>
+                    <video controls style="display:block; margin:20px auto; max-width:85%; border-radius:8px;">
+                        <source src="images/news/news6.mov" type="video/mp4">
+                    </video>
+                    デビュー13年目にして、ベクヒョン初のソロワールドツアー！<br>
+                    2025 BAEKHYUN WORLD TOUR ＜Riverie＞ in JAPAN<br>
+                    <b>日本公演チケット・1次先行受付中！
+                    夢のような時間をお見逃しなく！</b>
+                </p>`
+            },
+            {
+                id: "news7",
+                date: "2025/05/19",
+                title: "The 5th Mini Album 'Essence of Reverie' 本日リリース！",
+                content: `
+                <p>
+                    ベクヒョンの約8か月ぶりとなるソロアルバム、<br>
+                    <mark style="background-color:#c2a1da" class="has-inline-color has-white-color"><strong>The 5th Mini Album 'Essence of Reverie'</strong></mark>
+                    が本日リリースされました♪
+
+                    <div class="video-wrap">
+                    <iframe src="https://www.youtube.com/embed/lg3r8-4yfDI" 
+                    title="백현 (BAEKHYUN) &#39;Elevator&#39; MV" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display:block; margin:20px auto; max-width:85%; border-radius:8px;">
+                    </iframe>
+                    </div>
+               
+
+                    <mark style="background-color:#c2a1da" class="has-inline-color has-white-color"><strong>The 5th Mini Album 'Essence of Reverie'</strong></mark>は各種音楽配信サイトにて配中です。<br>
+
+                    🎧Spotify : <a href="https://open.spotify.com/album/5m3xaHvFvODdctmtdQ9qzB">https://open.spotify.com/album/5m3xaHvFvODdctmtdQ9qzB</a><br>
+                    🎧Apple Music : <a href="https://music.apple.com/jp/album/essence-of-reverie/1811564481">https://music.apple.com/jp/album/essence-of-reverie/1811564481</a><br>
+                </p>`
+            }
+            ];
+    
+            // ==== 每页条数 ====
+            const perPage = 5;
+            let currentPage = 1;
+    
+            // ==== 渲染列表 ====
+            function renderNews(page = 1) {
+            const list = document.querySelector(".news-list");
+            list.innerHTML = "";
+    
+            const start = (page - 1) * perPage;
+            const end = start + perPage;
+            const pageItems = newsData.slice(start, end);
+    
+            pageItems.forEach(item => {
+                const li = document.createElement("li");
+                li.className = "news-item";
+                li.innerHTML = `
+                <span class="news-date">${item.date}</span>
+                <a href="#" class="news-link" data-news="${item.id}">
+                    <p class="news-headline">${item.title}</p>
+                </a>
+                `;
+                list.appendChild(li);
+            });
+    
+            // 重新绑定点击事件（弹窗）
+            bindModalEvents();
+    
+            // 滚动出现动画
+            const items = document.querySelectorAll(".news-item");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                if(entry.isIntersecting){
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+                });
+            }, { threshold: 0.2 });
+            items.forEach(item => observer.observe(item));
+    
+            // 更新分页
+            renderPagination(page);
+            }
+    
+            // ==== 渲染分页 ====
+            function renderPagination(page) {
+            const totalPages = Math.ceil(newsData.length / perPage);
+            const pag = document.querySelector(".pagination");
+            pag.innerHTML = "";
+    
+            for(let i=1; i<=totalPages; i++){
+                const a = document.createElement("a");
+                a.href = "#";
+                a.className = "page" + (i === page ? " current" : "");
+                a.textContent = i;
+                a.addEventListener("click", e => {
+                e.preventDefault();
+                currentPage = i;
+                renderNews(i);
+                });
+                pag.appendChild(a);
+            }
+    
+            // ▶ 下一页按钮
+            if(page < totalPages){
+                const next = document.createElement("a");
+                next.href = "#";
+                next.className = "page next";
+                next.textContent = "▶";
+                next.addEventListener("click", e => {
+                e.preventDefault();
+                currentPage++;
+                renderNews(currentPage);
+                });
+                pag.appendChild(next);
+            }
+            }
+    
+            // ==== 渲染弹窗内容 ====
+            function renderModalContents() {
+            const body = document.querySelector(".news-modal-body");
+            body.innerHTML = "";
+            newsData.forEach(item => {
+                const div = document.createElement("div");
+                div.className = "news-modal-content";
+                div.id = item.id;
+                div.innerHTML = `
+                <h2>${item.title}</h2>
+                <p class="meta">${item.date}</p>
+                ${item.content}
+                <div class="news-back">← BACK</div>
+                `;
+                body.appendChild(div);
+            });
+            }
+    
+            // ==== 弹窗逻辑 ====
+            const modal = document.querySelector(".news-modal");
+    
+            function bindModalEvents() {
+            document.querySelectorAll(".news-link").forEach(link => {
+                link.addEventListener("click", e => {
+                e.preventDefault();
+                const targetId = link.dataset.news;
+                document.querySelectorAll(".news-modal-content").forEach(c => c.classList.remove("active"));
+                document.getElementById(targetId).classList.add("active");
+                modal.setAttribute("aria-hidden","false");
+                document.body.classList.add("modal-open");
+                });
+            });
+    
+            document.querySelectorAll(".news-back").forEach(btn => {
+                btn.addEventListener("click", () => {
+                modal.setAttribute("aria-hidden","true");
+                document.body.classList.remove("modal-open");
+                });
+            });
+            }
+    
+            // ==== 页面初始化 ====
+            document.addEventListener("DOMContentLoaded", () => {
+            renderModalContents();
+            renderNews(currentPage);
+            });
+    
+    
+        </script>
         
     </body>
+
+
+
+
+
+
 </html>
